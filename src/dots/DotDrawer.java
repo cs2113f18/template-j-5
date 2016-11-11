@@ -2,8 +2,7 @@ package dots;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 
 import util.*;
@@ -11,7 +10,7 @@ import util.*;
 /**
  * Created by timwood on 11/9/16.
  */
-public class DotDrawer extends JFrame implements ActionListener {
+public class DotDrawer extends JFrame implements ActionListener, MouseListener {
 	private static final long serialVersionUID = -5176170979783243427L;
 
 	/** The Dot Panel object you will draw to */
@@ -41,6 +40,7 @@ public class DotDrawer extends JFrame implements ActionListener {
 		JButton button = new JButton("Button Test!");
 		cPane.add(button, BorderLayout.SOUTH);
 		button.addActionListener(this);
+		dp.addMouseListener(this);
 
 		/* Initialize the DotPanel canvas:
 		 * You CANNOT draw to the panel BEFORE this code is called.
@@ -73,6 +73,35 @@ public class DotDrawer extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
 		Color randColor = Color.getHSBColor((float)Helper.nextDouble(), (float)Helper.nextDouble(), (float)Helper.nextDouble());
-		dots.add(new Dot(Helper.nextInt(MAX_X), Helper.nextInt(MAX_Y), randColor));
+		int x,y;
+		x = Helper.nextInt(MAX_X);
+		y = Helper.nextInt(MAX_Y);
+		dots.add(new Dot(x, y, randColor));
+		System.out.println("New dot at dot coordinate: " + x + ", " + y);
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent mouseEvent) {
+		System.out.println("Clicked at screen coordinate: " + mouseEvent.getX() + ", " + mouseEvent.getY());
+	}
+
+	@Override
+	public void mousePressed(MouseEvent mouseEvent) {
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent mouseEvent) {
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent mouseEvent) {
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent mouseEvent) {
+
 	}
 }
