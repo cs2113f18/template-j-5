@@ -9,8 +9,17 @@ import java.util.*;
 
 class Roster {
 
+	HashMap<Integer, Student> students;
+
+	public Roster() {
+
+		students = new HashMap<Integer, Student>();
+	}
+
     // Add a student to the roster through the given info.
     void addStudent(int id, String name, int gradYear) {
+		Student s = new Student(id, name, gradYear);
+		students.put(id, s);
 
     }
 
@@ -18,14 +27,20 @@ class Roster {
     // Format of printing: Number of Students: Number
     // eg. Number of Students: 5
     void printNumOfStudents() {
-
+		System.out.println(students.size() + " students.");
     }
 
     // Print the info of the student who has the given ID number.
     // Format of printing: ID: Name, Graduation Year
     // eg. 100150: Daniel, 2018
     void printStudentInfo(int id) {
-
+		Student s;
+		s = students.get(id);
+		if(s == null) {
+			System.out.println("No such student");
+			return;
+		}
+		System.out.println(s);
     }
 
     // Print all the students' info SORTED by students' names.
@@ -34,6 +49,13 @@ class Roster {
     //     Brian, 2019
     //     Carol, 2018
     void printRoster() {
+		ArrayList<Student> sortedStudents = new ArrayList<Student>();
+		sortedStudents.addAll(students.values());
+		Collections.sort(sortedStudents);
+
+		for(Student s: sortedStudents) {
+			System.out.println(s);
+		}
 
     }
 
