@@ -82,7 +82,7 @@ public class DotDrawer extends JFrame implements ActionListener, MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent mouseEvent) {
-		System.out.println("Clicked at screen coordinate: " + mouseEvent.getX() + ", " + mouseEvent.getY());
+		System.out.println("Clicked at screen coordinate: " + mouseEvent.getX() / DOT_SIZE + ", " + mouseEvent.getY() / DOT_SIZE);
 	}
 
 	@Override
