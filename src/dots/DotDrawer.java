@@ -1,21 +1,22 @@
 package dots;
 
+import util.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-import util.*;
-
 /**
  * Created by timwood on 11/9/16.
  */
-public class DotDrawer extends JFrame implements ActionListener, MouseListener {
+public class DotDrawer extends JFrame implements ActionListener, MouseListener, MouseMotionListener {
 	private static final long serialVersionUID = -5176170979783243427L;
 
 	/** The Dot Panel object you will draw to */
 	protected static DotPanel dp;
 	ArrayList<Dot> dots;
+	Dot draggedDot;
 
 	/* Define constants using static final variables */
 	public static final int MAX_X = 100;
@@ -41,6 +42,7 @@ public class DotDrawer extends JFrame implements ActionListener, MouseListener {
 		cPane.add(button, BorderLayout.SOUTH);
 		button.addActionListener(this);
 		dp.addMouseListener(this);
+		dp.addMouseMotionListener(this);
 
 		/* Initialize the DotPanel canvas:
 		 * You CANNOT draw to the panel BEFORE this code is called.
@@ -76,7 +78,8 @@ public class DotDrawer extends JFrame implements ActionListener, MouseListener {
 		int x,y;
 		x = Helper.nextInt(MAX_X);
 		y = Helper.nextInt(MAX_Y);
-		dots.add(new Dot(x, y, randColor));
+		Dot dot = new Dot(x, y, randColor);
+		dots.add(dot);
 		System.out.println("New dot at dot coordinate: " + x + ", " + y);
 	}
 
@@ -87,12 +90,17 @@ public class DotDrawer extends JFrame implements ActionListener, MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent mouseEvent) {
-
+		for(Dot dot : dots) {
+			if (dot.x == mouseEvent.getX() / DOT_SIZE && dot.y == mouseEvent.getY() / DOT_SIZE) {
+				draggedDot = dot;
+				return;
+			}
+		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent mouseEvent) {
-
+		draggedDot = null;
 	}
 
 	@Override
@@ -104,4 +112,18 @@ public class DotDrawer extends JFrame implements ActionListener, MouseListener {
 	public void mouseExited(MouseEvent mouseEvent) {
 
 	}
+
+	@Override
+	public void mouseDragged(MouseEvent mouseEvent) {
+		if(draggedDot != null) {
+			draggedDot.x = mouseEvent.getX() / DOT_SIZE;
+			draggedDot.y = mouseEvent.getY() / DOT_SIZE;
+		}
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent mouseEvent) {
+
+	}
+
 }
