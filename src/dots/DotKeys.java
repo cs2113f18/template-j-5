@@ -41,11 +41,9 @@ public class DotKeys extends JFrame implements ActionListener, KeyListener {
 		JButton button = new JButton("Button Test!");
 		cPane.add(button, BorderLayout.SOUTH);
 		button.addActionListener(this);
+		// Need to prevent button from getting focus (which would cause it to intercept the key presses)
+		button.setFocusable(false);
 
-		// Need to add Key Listener to the button and the JFrame since by default the button will get
-		// the keyboard's focus
-
-		button.addKeyListener(this);
 		this.addKeyListener(this);
 
 		/* Initialize the DotPanel canvas:
@@ -88,7 +86,6 @@ public class DotKeys extends JFrame implements ActionListener, KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent keyEvent) {
-		System.out.println(keyEvent.getKeyChar());
 	}
 
 	@Override
@@ -113,6 +110,5 @@ public class DotKeys extends JFrame implements ActionListener, KeyListener {
 
 	@Override
 	public void keyReleased(KeyEvent keyEvent) {
-		System.out.print(keyEvent.getKeyChar());
 	}
 }
