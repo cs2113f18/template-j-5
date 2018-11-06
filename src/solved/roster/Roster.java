@@ -3,26 +3,27 @@
  * Name:
  */
 
-package roster;
+package solved.roster;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 class Roster {
 
-    /* A HashMap relates a key to a value. In this case we relate
-    a student ID represented as an integer to a Student object.
-    */
-//	HashMap<XXXX, YYYYY> students;
+	HashMap<Integer, Student> students;
 
 	public Roster() {
-
-//		students = new HashMap<XXXX, YYYYY>();
+        /* A HashMap relates a key to a value. In this case we relate
+          a student ID represented as an integer to a Student object.
+         */
+		students = new HashMap<Integer, Student>();
 	}
 
     // Add a student to the roster through the given info.
     void addStudent(int id, String name, int gradYear) {
 		Student s = new Student(id, name, gradYear);
-//		students.put(id, s);
+		students.put(id, s);
 
     }
 
@@ -30,15 +31,15 @@ class Roster {
     // Format of printing: Number of Students: Number
     // eg. Number of Students: 5
     void printNumOfStudents() {
-
+		System.out.println(students.size() + " students.");
     }
 
     // Print the info of the student who has the given ID number.
     // Format of printing: ID: Name, Graduation Year
     // eg. 100150: Daniel, 2018
     void printStudentInfo(int id) {
-		Student s = null;
-		// get the student from the Hashmap
+		Student s;
+		s = students.get(id);
 		if(s == null) {
 			System.out.println("No such student");
 			return;
@@ -52,8 +53,14 @@ class Roster {
     //     Brian, 2019
     //     Carol, 2018
     void printRoster() {
-		// A HashMap itself can't be sorted, so add all of its elements to a data structure that supports
-        // sorting, like an ArrayList. Then use Collections.sort to order it.
+		ArrayList<Student> sortedStudents = new ArrayList<Student>();
+		sortedStudents.addAll(students.values());
+
+		Collections.sort(sortedStudents);
+
+		for(Student s: sortedStudents) {
+			System.out.println(s);
+		}
 
     }
 

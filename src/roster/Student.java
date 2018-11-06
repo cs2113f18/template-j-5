@@ -2,7 +2,7 @@
 package roster;
 
 
-class Student implements Comparable<Student> { // Do not change this line
+class Student {
 
 	private int id;
 	private String name;
@@ -20,19 +20,4 @@ class Student implements Comparable<Student> { // Do not change this line
 		return s;
 	}
 
-	@Override
-	public int compareTo(Student student) {
-
-		return name.compareTo(student.name);
-		// return -1 if my year < student's year
-		// else 0 if equal
-		// else 1 if other student has a higher year than me
-//
-//		if(gradYear < student.gradYear)
-//			return -1;
-//		else if(gradYear == student.gradYear)
-//			return 0;
-//		else
-//			return 1;
-	}
 }
