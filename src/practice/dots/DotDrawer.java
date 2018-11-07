@@ -1,4 +1,4 @@
-package dots;
+package practice.dots;
 
 import util.*;
 
@@ -74,7 +74,7 @@ public class DotDrawer extends JFrame implements ActionListener, MouseListener, 
 
 	@Override
 	public void actionPerformed(ActionEvent actionEvent) {
-		Color randColor = Color.getHSBColor((float)Helper.nextDouble(), (float)Helper.nextDouble(), (float)Helper.nextDouble());
+		Color randColor = Color.getHSBColor((float)Helper.nextDouble(), (float)Helper.nextDouble(), (float)Helper.nextDouble()*2);
 		int x,y;
 		x = Helper.nextInt(MAX_X);
 		y = Helper.nextInt(MAX_Y);

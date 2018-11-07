@@ -1,5 +1,5 @@
 
-package solved.roster;
+package practice.solved.roster;
 
 
 class Student implements Comparable<Student> {

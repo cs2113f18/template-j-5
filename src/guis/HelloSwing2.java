@@ -14,7 +14,6 @@ public class HelloSwing2 {
 		// make the program exit when the close button is clicked
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setSize (300, 300);
-		f.setVisible (true);
 
 		//   First, extract the contentPane
 		Container cPane = f.getContentPane();

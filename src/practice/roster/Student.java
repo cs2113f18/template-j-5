@@ -1,5 +1,5 @@
 
-package roster;
+package practice.roster;
 
 
 class Student {

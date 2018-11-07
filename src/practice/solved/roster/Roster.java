@@ -3,7 +3,7 @@
  * Name:
  */
 
-package solved.roster;
+package practice.solved.roster;
 
 import java.util.ArrayList;
 import java.util.Collections;

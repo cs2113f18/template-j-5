@@ -1,4 +1,4 @@
-package dots;
+package practice.dots;
 
 import util.DotPanel;
 

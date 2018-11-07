@@ -3,9 +3,7 @@
  * Name:
  */
 
-package roster;
-
-import java.util.*;
+package practice.roster;
 
 class Roster {
 

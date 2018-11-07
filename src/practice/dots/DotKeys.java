@@ -1,4 +1,4 @@
-package dots;
+package practice.dots;
 
 import util.DotPanel;
 import util.Helper;
@@ -6,7 +6,6 @@ import util.Helper;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
 /**
  * Created by timwood on 11/9/16.
